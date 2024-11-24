@@ -1,0 +1,35 @@
+#include <stdio.h>
+#include <string.h>
+int countOccurrences(int n, char stringList[][100], char* query) {
+    int count = 0;
+    for (int i = 0; i < n; i++) {
+        if (strcmp(stringList[i], query) == 0) { 
+            count++;
+        }
+    }
+    return count;
+}
+
+void matchingStrings(int n, char stringList[][100], int q, char queries[][100]) {
+    for (int i = 0; i < q; i++) {
+        int count = countOccurrences(n, stringList, queries[i]);
+        printf("%d\n", count); 
+    }
+}
+
+int main() {
+    int n, q;
+    scanf("%d", &n);
+    char stringList[n][100];
+    for (int i = 0; i < n; i++) {
+        scanf("%s", stringList[i]);
+    }
+    scanf("%d", &q);
+    char queries[q][100];
+    for (int i = 0; i < q; i++) {
+        scanf("%s", queries[i]);
+    }
+    matchingStrings(n, stringList, q, queries);
+
+    return 0;
+}
